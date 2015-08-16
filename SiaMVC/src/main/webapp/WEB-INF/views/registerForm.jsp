@@ -2,7 +2,7 @@
 <%@ page session="false" %>
 <html>
   <head>
-    <title>User</title>
+    <title>User Registration</title>
     <link rel="stylesheet" type="text/css" 
           href="<c:url value="/resources/style.css" />" >
   </head>

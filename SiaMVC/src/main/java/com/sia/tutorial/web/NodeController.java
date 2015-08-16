@@ -1,11 +1,6 @@
 package com.sia.tutorial.web;
 
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.sia.tutorial.Node;
-import com.sia.tutorial.data.NodeRepository;
-
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.sia.tutorial.Node;
+import com.sia.tutorial.data.NodeRepository;
 
 @Controller
 @RequestMapping("/nodes")
@@ -38,5 +38,12 @@ public class NodeController {
 			@RequestParam(value = "count", defaultValue = "20") int count) {
 		return nodeRepository.findNodes(max, count);
 	}
+	
+	@RequestMapping(method=RequestMethod.POST)
+	  public String saveSpittle(NodeForm form, Model model) throws Exception {
+	    nodeRepository.save(new Node(null, form.getMessage(), new Date(), 
+	        form.getLongitude(), form.getLatitude()));
+	    return "redirect:/node";
+	  }
 
 }
