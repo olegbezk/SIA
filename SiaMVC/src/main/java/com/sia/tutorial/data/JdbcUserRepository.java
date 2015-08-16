@@ -36,7 +36,7 @@ public class JdbcUserRepository implements UserRepository {
 	@Override
 	public User findByUsername(String username) {
 		return jdbc.queryForObject(
-				"select id, username, null, first_name, last_name, email from User where username=?",
+				"select id, username, first_name, last_name, email from User where username=?",
 				new UserRowMapper(), username);
 	}
 	
