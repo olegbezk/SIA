@@ -14,11 +14,11 @@ public class Node {
 	private Double longitude;
 
 	public Node(String message, Date time) {
-		this(message, time, null, null);
+		this(null, message, time, null, null);
 	}
 
-	public Node(String message, Date time, Double longitude, Double latitude) {
-		this.id = null;
+	public Node(Long id, String message, Date time, Double longitude, Double latitude) {
+		this.id = id;
 		this.message = message;
 		this.time = time;
 		this.longitude = longitude;

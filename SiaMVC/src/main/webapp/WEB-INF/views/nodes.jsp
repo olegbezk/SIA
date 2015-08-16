@@ -4,12 +4,12 @@
 
 <html>
   <head>
-    <title>Node Place</title>
+    <title>Message Place</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/style.css" />" >
   </head>
   <body>
     <div class="spittleForm">
-      <h1>Node it out...</h1>
+      <h1>Turn it out...</h1>
       <form method="POST" name="nodeForm">
         <input type="hidden" name="latitude">
         <input type="hidden" name="longitude">

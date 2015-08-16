@@ -10,6 +10,6 @@ href="<c:url value="/resources/style.css" />" >
 <body>
 <h1>Welcome to Spring MVC</h1>
 <a href="<c:url value="/nodes" />">Nodes</a> |
-<a href="<c:url value="/nodes/register" />">Register</a>
+<a href="<c:url value="/user/register" />">Register</a>
 </body>
 </html>
