@@ -3,8 +3,12 @@ package com.sia.tutorial;
 import static org.hamcrest.Matchers.hasItems;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
@@ -22,7 +26,7 @@ import com.sia.tutorial.web.NodeController;
 public class NodeControllerTest {
 
 	@Test
-	public void shouldShowRecentSpittles() throws Exception {
+	public void shouldShowRecentNodes() throws Exception {
 		
 		List<Node> expectedNodes = createNodeList(20);
 		NodeRepository mockRepository = mock(NodeRepository.class);
@@ -37,7 +41,7 @@ public class NodeControllerTest {
 	}
 
 	@Test
-	public void shouldShowPagedSpittles() throws Exception {
+	public void shouldShowPagedNodes() throws Exception {
 		
 		List<Node> expectedNodes = createNodeList(50);
 		NodeRepository mockRepository = mock(NodeRepository.class);
@@ -64,6 +68,21 @@ public class NodeControllerTest {
 		
 		mockMvc.perform(get("/nodes/12345")).andExpect(view().name("nodes")).andExpect(model().attributeExists("node"))
 				.andExpect(model().attribute("node", expectedNode));
+	}
+
+	@Test
+	public void saveNode() throws Exception {
+		NodeRepository mockRepository = mock(NodeRepository.class);
+		NodeController controller = new NodeController(mockRepository);
+		MockMvc mockMvc = standaloneSetup(controller).build();
+
+		mockMvc.perform(post("/nodes")
+						.param("message", "Hello World") // this works, but isn't really testing what really happens
+						.param("longitude", "-81.5811668")
+						.param("latitude", "28.4159649"))
+				.andExpect(redirectedUrl("/nodes"));
+
+		verify(mockRepository, atLeastOnce()).save(new Node(null, "Hello World", new Date(), -81.5811668, 28.4159649));
 	}
 
 	private List<Node> createNodeList(int count) {

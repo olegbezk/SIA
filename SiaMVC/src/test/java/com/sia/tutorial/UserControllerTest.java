@@ -6,6 +6,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
@@ -46,6 +48,20 @@ public class UserControllerTest {
 				.andExpect(redirectedUrl("/user/olegbezk"));
 
 		verify(mockRepository, atLeastOnce()).save(unsaved);
+	}
+
+	@Test
+	public void shouldFailValidationWithNoData() throws Exception {
+		UserRepository mockRepository = mock(UserRepository.class);
+		UserController controller = new UserController(mockRepository);
+		MockMvc mockMvc = standaloneSetup(controller).build();
+
+		mockMvc.perform(post("/user/register"))
+				.andExpect(status().isOk())
+				.andExpect(view().name("registerForm"))
+				.andExpect(model().errorCount(5))
+				.andExpect(model().attributeHasFieldErrors(
+						"user", "firstName", "lastName", "username", "password", "email"));
 	}
 
 }

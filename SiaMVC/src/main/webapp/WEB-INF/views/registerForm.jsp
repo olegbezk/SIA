@@ -15,7 +15,9 @@
       Email: <input type="email" name="email" /><br/>
       Username: <input type="text" name="username" /><br/>
       Password: <input type="password" name="password" /><br/>
-      <input type="submit" value="Register" />
+      <input type="submit" value="Register" /><br/>
+          <a href="<c:url value="/homepage" />"><input type="button" value="Home" /></a>
     </form>
+
   </body>
 </html>

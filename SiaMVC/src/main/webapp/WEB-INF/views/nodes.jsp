@@ -36,5 +36,6 @@
         <a href="${more_url}">Show more</a>
       </c:if>
     </div>
+    <a href="<c:url value="/homepage" />"><input type="button" value="Home" /></a>
   </body>
 </html>

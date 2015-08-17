@@ -43,7 +43,7 @@ public class NodeController {
 	  public String saveSpittle(NodeForm form, Model model) throws Exception {
 	    nodeRepository.save(new Node(null, form.getMessage(), new Date(), 
 	        form.getLongitude(), form.getLatitude()));
-	    return "redirect:/node";
+	    return "redirect:/nodes";
 	  }
 
 }

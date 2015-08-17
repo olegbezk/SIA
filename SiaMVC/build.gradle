@@ -1,7 +1,6 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'war'
-apply plugin: 'eclipse-wtp'
 
 repositories {
     maven { url 'http://maven.springframework.org/release' }
@@ -35,12 +34,4 @@ task wrapper(type: Wrapper) {
 
 war {
         baseName = 'siamvc'
-}
-
-eclipse {
-        wtp {
-                component {
-                        contextPath = 'siamvc'
-                }
-        }
 }
