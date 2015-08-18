@@ -1,8 +1,7 @@
 package com.sia.tutorial.web;
 
-import java.util.Date;
-import java.util.List;
-
+import com.sia.tutorial.Node;
+import com.sia.tutorial.data.NodeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sia.tutorial.Node;
-import com.sia.tutorial.data.NodeRepository;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/nodes")

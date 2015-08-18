@@ -1,15 +1,14 @@
 package com.sia.tutorial.config;
 
-import java.util.regex.Pattern;
-
+import com.sia.tutorial.config.RootConfig.WebPackage;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
-import org.springframework.core.type.filter.RegexPatternTypeFilter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.type.filter.RegexPatternTypeFilter;
 
-import com.sia.tutorial.config.RootConfig.WebPackage;
+import java.util.regex.Pattern;
 
 @Configuration
 @Import(DataConfig.class)

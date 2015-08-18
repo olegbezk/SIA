@@ -1,8 +1,8 @@
 package com.sia.tutorial.data;
 
-import java.util.List;
-
 import com.sia.tutorial.Node;
+
+import java.util.List;
 
 public interface NodeRepository {
 	

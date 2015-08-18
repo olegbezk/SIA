@@ -1,9 +1,9 @@
 package com.sia.tutorial;
 
-import java.util.Date;
-
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import java.util.Date;
 
 public class Node {
 

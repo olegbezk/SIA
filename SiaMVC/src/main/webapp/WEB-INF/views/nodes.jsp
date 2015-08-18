@@ -20,7 +20,7 @@
     <div class="listTitle">
       <h1>Recent Nodes</h1>
       <ul class="nodeList">
-        <c:forEach items="${nodeList}" var="nodes" >
+        <c:forEach items="${nodeList}" var="node" >
           <li id="node_<c:out value="node.id"/>">
             <div class="nodeMessage"><c:out value="${node.message}" /></div>
             <div>
