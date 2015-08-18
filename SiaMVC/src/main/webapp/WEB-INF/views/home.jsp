@@ -1,5 +1,6 @@
 <%--suppress XmlPathReference --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ page session="false" %>
 <html>
 <head>
@@ -9,8 +10,12 @@ type="text/css"
 href="<c:url value="/resources/style.css" />" >
 </head>
 <body>
-<h1>Welcome to Spring MVC</h1>
-<a href="<c:url value="/nodes" />">Nodes</a> |
-<a href="<c:url value="/user/register" />">Register</a>
+<h1><s:message code="sia.welcome" text="Welcome" /></h1>
+
+<s:url value="/nodes" var="nodeUrl" />
+<a href="${nodeUrl}" />Nodes</a> |
+
+<s:url value="/user/register" var="registerUrl" />
+<a href="${registerUrl}">Register</a>
 </body>
 </html>

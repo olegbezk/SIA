@@ -29,7 +29,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register", method = GET)
-	public String showRegistrationForm() {
+	public String showRegistrationForm(Model model) {
+		model.addAttribute(new User());
 		return "registerForm";
 	}
 

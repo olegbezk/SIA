@@ -60,7 +60,7 @@ public class NodeControllerTest {
 		NodeController controller = new NodeController(mockRepository);
 		MockMvc mockMvc = standaloneSetup(controller).build();
 		
-		mockMvc.perform(get("/nodes/12345")).andExpect(view().name("nodes")).andExpect(model().attributeExists("node"))
+		mockMvc.perform(get("/nodes/12345")).andExpect(view().name("node")).andExpect(model().attributeExists("node"))
 				.andExpect(model().attribute("node", expectedNode));
 	}
 
