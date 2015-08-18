@@ -30,7 +30,7 @@ public class NodeController {
 	@RequestMapping(value = "/{nodeId}", method = RequestMethod.GET)
 	public String node(@PathVariable("nodeId") long nodeId, Model model) {
 		model.addAttribute(nodeRepository.findOne(nodeId));
-		return "nodes";
+		return "node";
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -40,7 +40,7 @@ public class NodeController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	  public String saveSpittle(NodeForm form, Model model) throws Exception {
+	  public String saveNode(NodeForm form, Model model) throws Exception {
 	    nodeRepository.save(new Node(null, form.getMessage(), new Date(), 
 	        form.getLongitude(), form.getLatitude()));
 	    return "redirect:/nodes";
