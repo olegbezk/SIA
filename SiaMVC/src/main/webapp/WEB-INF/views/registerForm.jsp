@@ -5,12 +5,12 @@
 <%@ page session="false" %>
 <html>
   <head>
-    <title>User Registration</title>
+    <title><s:message code="sia.register" /></title>
     <link rel="stylesheet" type="text/css" 
           href="<c:url value="/resources/style.css" />" >
   </head>
   <body>
-    <h1>Register</h1>
+    <h1><s:message code="sia.register" /></h1>
 
     <sf:form method="POST" commandName="user">
           <sf:errors path="*" element="div" cssClass="errors" />

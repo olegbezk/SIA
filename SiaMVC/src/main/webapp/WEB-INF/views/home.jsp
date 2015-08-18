@@ -14,7 +14,6 @@ href="<c:url value="/resources/style.css" />" >
 
 <s:url value="/nodes" var="nodeUrl" />
 <a href="${nodeUrl}">Nodes</a> |
-
 <s:url value="/user/register" var="registerUrl" />
 <a href="${registerUrl}">Register</a>
 </body>

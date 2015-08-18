@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/style.css" />" >
   </head>
   <body>
-    <div class="spittleForm">
-      <h1>Turn it out...</h1>
+    <div class="nodeForm">
+      <h1><s:message code="sia.message" /></h1>
       <form method="POST" name="nodeForm">
         <input type="hidden" name="latitude">
         <input type="hidden" name="longitude">
@@ -18,7 +18,7 @@
       </form>
     </div>
     <div class="listTitle">
-      <h1>Recent Nodes</h1>
+      <h1><s:message code="sia.recent" /></h1>
       <ul class="nodeList">
         <c:forEach items="${nodeList}" var="node" >
           <li id="node_<c:out value="node.id"/>">
