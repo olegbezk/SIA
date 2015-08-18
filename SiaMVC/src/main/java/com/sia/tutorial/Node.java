@@ -29,9 +29,7 @@ public class Node {
 		return id;
 	}
 
-	public String getMessage() {
-		return message;
-	}
+	public String getMessage() {return message;}
 
 	public Date getTime() {
 		return time;
