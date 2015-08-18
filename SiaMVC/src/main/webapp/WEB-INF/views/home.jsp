@@ -10,10 +10,10 @@ type="text/css"
 href="<c:url value="/resources/style.css" />" >
 </head>
 <body>
-<h1><s:message code="sia.welcome" text="Welcome" /></h1>
+<h1><s:message code="sia.welcome" /></h1>
 
 <s:url value="/nodes" var="nodeUrl" />
-<a href="${nodeUrl}" />Nodes</a> |
+<a href="${nodeUrl}">Nodes</a> |
 
 <s:url value="/user/register" var="registerUrl" />
 <a href="${registerUrl}">Register</a>
