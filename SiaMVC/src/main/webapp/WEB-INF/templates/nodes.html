@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spitter</title>
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{/resources/style.css}" />
+</head>
+<body>
+<div id="header" th:include="page :: header"></div>
+
+<div id="content">
+    <div class="nodeForm">
+        <h1>Turn it out...</h1>
+        <form method="POST" name="nodeForm">
+            <input type="hidden" name="latitude" />
+            <input type="hidden" name="longitude" />
+            <textarea name="message" cols="80" rows="5"></textarea><br/>
+            <input type="submit" value="Add" />
+        </form>
+    </div>
+    <div class="listTitle">
+        <h1>Recent Nodes</h1>
+        <ul class="nodeList">
+            <li th:each="node : ${nodeList}"
+                th:id="'node_' + ${node.id}">
+                <div class="nodeMessage" th:text="${node.message}">Spittle message</div>
+                <div>
+                    <span class="nodeTime" th:text="${node.time}">spittle timestamp</span>
+                    <span class="nodeLocation" th:text="'{' + ${node.latitude} + ', ' + ${node.longitude} + ')'">lat, long</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="footer" th:include="page :: copy"></div>
+</body>
+</html>
