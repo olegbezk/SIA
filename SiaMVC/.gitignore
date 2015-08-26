@@ -1,6 +1,7 @@
 /target/
 /bin/
 /build/
+/classes/
 .gradle/
 .idea
 .settings/
