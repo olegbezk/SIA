@@ -2,6 +2,9 @@ package com.sia.tutorial.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
+
 public class SiaMvcWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
@@ -18,5 +21,12 @@ public class SiaMvcWebAppInitializer extends AbstractAnnotationConfigDispatcherS
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
 	}
+
+	@Override
+    protected void customizeRegistration(Dynamic registration) {
+        registration.setMultipartConfig(
+                new MultipartConfigElement("/", 2097152, 4194304, 0)
+        );
+    }
 
 }

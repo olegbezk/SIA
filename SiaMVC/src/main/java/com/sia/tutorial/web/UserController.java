@@ -8,8 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+
+import java.io.File;
+import java.io.IOException;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -18,36 +22,51 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RequestMapping("/user")
 public class UserController {
 
-	private UserRepository userRepository;
+    private UserRepository userRepository;
 
-	public UserController() {
-	}
+    public UserController() {
+    }
 
-	@Autowired
-	public UserController(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
+    @Autowired
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-	@RequestMapping(value = "/register", method = GET)
-	public String showRegistrationForm(Model model) {
-		model.addAttribute(new User());
-		return "registerForm";
-	}
+    @RequestMapping(value = "/register", method = GET)
+    public String showRegistrationForm(Model model) {
+        model.addAttribute(new User());
+        return "registerForm";
+    }
 
-	@RequestMapping(value = "/register", method = POST)
-	public String processRegistration(@Valid User user, Errors errors) {
-		if (errors.hasErrors()) {
-			return "registerForm";
-		}
-		userRepository.save(user);
-		return "redirect:/user/" + user.getUsername();
-	}
+//	@RequestMapping(value = "/register", method = POST)
+//	public String processRegistration(@Valid User user, Errors errors) {
+//		if (errors.hasErrors()) {
+//			return "registerForm";
+//		}
+//		userRepository.save(user);
+//		return "redirect:/user/" + user.getUsername();
+//	}
 
-	@RequestMapping(value = "/{username}", method = GET)
-	public String showUserProfile(@PathVariable String username, Model model) {
-		User user = userRepository.findByUsername(username);
-		model.addAttribute(user);
-		return "profile";
-	}
+    @RequestMapping(value = "/register", method = POST)
+    public String processingRegistration(@Valid RegisterForm registerForm,
+                                         Errors errors) throws IOException, IllegalStateException {
+        if (errors.hasErrors()) {
+            return "registerForm";
+        }
+        User user = registerForm.toUser();
+        userRepository.save(user);
+
+        MultipartFile profilePicture = registerForm.getProfilePicture();
+        profilePicture.transferTo(new File("/" + user.getUsername() + ".jpg"));
+
+        return "redirect:/user/" + user.getUsername();
+    }
+
+    @RequestMapping(value = "/{username}", method = GET)
+    public String showUserProfile(@PathVariable String username, Model model) {
+        User user = userRepository.findByUsername(username);
+        model.addAttribute(user);
+        return "profile";
+    }
 
 }
