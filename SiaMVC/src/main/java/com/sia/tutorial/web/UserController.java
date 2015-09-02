@@ -38,15 +38,6 @@ public class UserController {
         return "registerForm";
     }
 
-//	@RequestMapping(value = "/register", method = POST)
-//	public String processRegistration(@Valid User user, Errors errors) {
-//		if (errors.hasErrors()) {
-//			return "registerForm";
-//		}
-//		userRepository.save(user);
-//		return "redirect:/user/" + user.getUsername();
-//	}
-
     @RequestMapping(value = "/register", method = POST)
     public String processingRegistration(@Valid RegisterForm registerForm,
                                          Errors errors) throws IOException, IllegalStateException {
@@ -60,6 +51,12 @@ public class UserController {
         profilePicture.transferTo(new File("/" + user.getUsername() + ".jpg"));
 
         return "redirect:/user/" + user.getUsername();
+    }
+
+    @RequestMapping(value="/me", method=GET)
+    public String me() {
+        System.out.println("ME ME ME ME ME ME ME ME ME ME ME");
+        return "home";
     }
 
     @RequestMapping(value = "/{username}", method = GET)
