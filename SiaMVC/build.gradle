@@ -13,10 +13,15 @@ repositories {
 dependencies {
 	compile "org.springframework:spring-webmvc:$springVersion"
 	compile "org.springframework:spring-jdbc:$springVersion"
+    compile "org.springframework.security:spring-security-config:$springSecurityVersion"
+    compile "org.springframework.security:spring-security-web:$springSecurityVersion"
 	compile "com.h2database:h2:$h2Version"
 	compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
 	compile "org.apache.commons:commons-lang3:$commonsLangVersion"
     compile "org.thymeleaf:thymeleaf-spring4:$thymeleafVersion"
+    compile("log4j:log4j:${log4jVersion}")
+    compile "org.thymeleaf.extras:thymeleaf-extras-springsecurity3:2.1.1.RELEASE"
+    compile "org.springframework.ldap:spring-ldap-core:2.0.1.RELEASE"
 
     compile "commons-fileupload:commons-fileupload:1.3"
 
