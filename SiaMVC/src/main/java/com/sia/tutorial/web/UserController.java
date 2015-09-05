@@ -47,8 +47,8 @@ public class UserController {
         User user = registerForm.toUser();
         userRepository.save(user);
 
-        MultipartFile profilePicture = registerForm.getProfilePicture();
-        profilePicture.transferTo(new File("/" + user.getUsername() + ".jpg"));
+//        MultipartFile profilePicture = registerForm.getProfilePicture();
+//        profilePicture.transferTo(new File("/" + user.getUsername() + ".jpg"));
 
         return "redirect:/user/" + user.getUsername();
     }
